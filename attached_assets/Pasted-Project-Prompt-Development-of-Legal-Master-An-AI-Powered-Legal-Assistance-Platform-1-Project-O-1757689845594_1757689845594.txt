@@ -1,0 +1,178 @@
+Project Prompt: Development of "Legal Master" - An AI-Powered Legal Assistance Platform
+1. Project Overview
+The goal is to build "Legal Master," a full-stack, production-ready web application designed to make legal information accessible and understandable to the general public. The platform will leverage the Google Gemini LLM to simplify complex legal documents, explain legal jargon, analyze case scenarios, and guide users through legal procedures.
+
+The final product should be professional, intuitive, and highly interactive, with a clean user interface and smooth animations.
+
+2. Design & Aesthetics
+Website Name: Legal Master
+
+Theme: Clean, modern, and professional legal-tech. The design should inspire trust and clarity.
+
+Colour Scheme:
+
+Primary (Deep Indigo): #1A237E (Used for headers, buttons, and key elements)
+
+Secondary (Dark Gray): #4A4A4A (Used for body text and subheadings)
+
+Accent (Soft Gold): #C5A56D (Used for highlights, icons, and call-to-action accents)
+
+Background (Off-White): #F8F9FA (Clean and easy on the eyes)
+
+Typography: Use a clean, sans-serif font like 'Inter' or 'Poppins' for readability.
+
+3. Core Features & Functionality
+Feature 1: User Authentication & Dashboard
+UI/UX:
+
+Create dedicated, minimalist Login and Signup pages.
+
+Support email/password authentication and Google OAuth.
+
+Upon login, the user should be directed to a personal Dashboard.
+
+The Dashboard will display a history of saved simplified documents and past case chat analyses.
+
+Backend Logic:
+
+Implement user management using Firebase Authentication.
+
+Securely store user data and history in Firestore.
+
+Feature 2: Landing Page & Main UI
+UI/UX:
+
+Hero Section: A prominent heading that reads "Simplify Legal Documents Instantly".
+
+Animated Subtext: Below the main heading, implement a continuous typing cursor animation that cycles through key terms: Contracts... Agreements... Policies... Simplified.
+
+Primary Call-to-Action (CTA) Buttons: Two main buttons: "Analyze Document" and "Explore Laws".
+
+The overall layout should be clean, with smooth scroll animations.
+
+Feature 3: Document Simplifier
+UI/UX:
+
+Provide three options for input:
+
+File Upload: A drag-and-drop or file selection interface for PDF/Word documents.
+
+Paste Text: A simple textarea for pasting raw text.
+
+Digilocker Integration: An "Import from Digilocker" button.
+
+While the Gemini API is processing, display a loading animation (e.g., a spinner or pulsing dots).
+
+The results should appear in a stylized card with a smooth fade-in animation.
+
+The output should automatically highlight and categorize Key Obligations, Potential Risks, and Important Deadlines.
+
+Backend Logic:
+
+File Handling: Set up a Node.js endpoint to receive uploaded files, extract text content, and handle pasted text.
+
+Digilocker: Implement the OAuth 2.0 flow for Digilocker integration to allow users to securely fetch and import their documents.
+
+Gemini API Call: Send the extracted text to the Gemini API with the prompt:
+
+"Summarize the following legal text in simple, plain English. Structure the output into three distinct sections: 1. Key Obligations (what you must do), 2. Potential Risks (what you should watch out for), and 3. Important Deadlines (dates or timeframes you cannot miss). Format the output clearly."
+
+Feature 4: Jargon Explainer (Interactive Tooltip)
+UI/UX:
+
+Within the simplified document view, users should be able to click on any legal term or confusing phrase.
+
+On click, a small popup/tooltip appears with a simple explanation.
+
+Backend Logic:
+
+When a term is clicked, make a client-side API call to a Node.js endpoint.
+
+Gemini API Call: The backend sends the selected term to the Gemini API with the prompt:
+
+"Explain the legal term '[SELECTED_TERM]' in one or two simple sentences, as if explaining it to a 15-year-old."
+
+Feature 5: Comprehensive Law Explorer
+UI/UX:
+
+A dedicated page titled "All Laws."
+
+A global search bar at the top that allows users to search by keyword, article number, or section number (e.g., "Article 21", "Section 420", "Theft").
+
+Laws should be grouped into categories (e.g., "Indian Penal Code," "Constitution of India," "Information Technology Act").
+
+Each category should be an expandable/collapsible accordion to keep the UI clean.
+
+Inside each category, list the articles/sections with their title and a brief official description.
+
+Each article/section should have a "Simplify with Gemini" button. Clicking it reveals a simplified explanation with a real-world example.
+
+Backend Logic:
+
+Store all laws, sections, and their descriptions in a structured JSON file or a Firestore collection.
+
+The search bar should trigger an API call that queries this data source.
+
+Gemini API Call (for Simplification): When the "Simplify" button is clicked, call the Gemini API with:
+
+"Explain '[LAW_TITLE/SECTION_NUMBER]' from '[LAW_CATEGORY]' in simple terms. Provide a concise, real-world example of how this law applies."
+
+Gemini API Call (for Search): When a user searches, the backend fetches the relevant law and then calls the Gemini API with the same simplification prompt.
+
+Feature 6: AI Case Chat Analyzer
+UI/UX:
+
+A dedicated page with a simple chat interface.
+
+A text input box where the user can describe a situation or a legal case.
+
+The AI's response should be displayed in the chat window, clearly formatted.
+
+Backend Logic:
+
+Create a new API endpoint for the case chat.
+
+Gemini API Call: Send the user's case description to the Gemini API with the prompt:
+
+"Analyze the following case description from the perspective of Indian law: '[USER_INPUT]'. Based on the details provided, identify and list the potential relevant laws and sections. For each law/section, briefly explain why it's relevant and state the potential legal punishments or consequences associated with it."
+
+Feature 7: Legal Procedure Guide
+UI/UX:
+
+A dedicated page or a modal accessible from the main navigation.
+
+A simple input field where a user can type the name of a legal document they need (e.g., "Rent Agreement," "Passport," "Will").
+
+The output should be a well-structured guide with clear headings.
+
+Backend Logic:
+
+Create an API endpoint for procedure requests.
+
+Gemini API Call: Send the user's request to the Gemini API with the prompt:
+
+"Provide a detailed, step-by-step procedure for obtaining a '[DOCUMENT_NAME]' in India. Also, create a separate, bulleted list of all the documents required for this process."
+
+4. Technical Stack & Requirements
+Frontend: HTML5, CSS3, JavaScript (Vanilla JS or a lightweight library). No complex frameworks are needed unless you deem it necessary for animations.
+
+Backend: Node.js with Express.js for creating RESTful API endpoints.
+
+LLM Integration: Google Gemini API.
+
+Database/Data Source:
+
+JSON file or Firestore for storing the structured law data.
+
+Firestore for user data and history (linked to Firebase Authentication).
+
+Animations: Use CSS transitions and JavaScript to implement the specified typing effects, fade-ins, and accordion animations.
+
+5. Deliverables
+Complete Source Code: Production-ready, well-commented, and organized code for both the frontend and the Node.js backend.
+
+Project Structure: A logical folder structure (e.g., /public for frontend assets, /server for backend logic).
+
+Dependencies: A package.json file listing all required npm packages.
+
+README.md: A clear setup and installation guide, including how to add the Gemini API key and Firebase credentials as environment variables.
