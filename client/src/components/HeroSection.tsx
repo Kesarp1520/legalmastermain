@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { FileText, Search, Upload, MessageSquare } from "lucide-react";
 import { useState, useEffect } from "react";
 import heroImage from "@assets/generated_images/Professional_legal_office_scene_311bcd16.png";
-
+import { Link } from "react-router-dom";
 const typingTerms = ["Contracts...", "Agreements...", "Policies...", "Simplified."];
 
 export default function HeroSection() {
@@ -68,13 +68,16 @@ export default function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
+             <Button 
               size="lg" 
               className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 text-lg font-semibold"
               data-testid="button-analyze-document"
+              asChild
             >
-              <Upload className="w-5 h-5 mr-2" />
-              Analyze Document
+              <Link to="/document-uploader">
+                <Upload className="w-5 h-5 mr-2" />
+                Analyze Document
+              </Link>
             </Button>
             <Button 
               variant="outline" 

@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { useAuth } from "./lib/AuthContext";
 import NotFound from "@/pages/not-found";
 
 // Components
@@ -103,14 +104,35 @@ function GuidePage() {
   );
 }
 
+import LoginPage from "@/pages/Login";
+import SignUpPage from "@/pages/SignUp";
+
+function ProtectedRoute({ component: Component, ...rest }: { component: React.ComponentType<any> }) {
+  const { user, loading } = useAuth();
+  const [, setLocation] = useLocation();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user) {
+    setLocation("/");
+    return null;
+  }
+
+  return <Component {...rest} />;
+}
+
 function Router() {
   return (
     <Switch>
       <Route path="/" component={HomePage} />
-      <Route path="/simplify" component={SimplifyPage} />
-      <Route path="/explorer" component={ExplorerPage} />
-      <Route path="/chat" component={ChatPage} />
-      <Route path="/guide" component={GuidePage} />
+      <Route path="/simplify" component={() => <ProtectedRoute component={SimplifyPage} />} />
+      <Route path="/explorer" component={() => <ProtectedRoute component={ExplorerPage} />} />
+      <Route path="/chat" component={() => <ProtectedRoute component={ChatPage} />} />
+      <Route path="/guide" component={() => <ProtectedRoute component={GuidePage} />} />
+      <Route path="/login" component={LoginPage} />
+      <Route path="/signup" component={SignUpPage} />
       <Route component={NotFound} />
     </Switch>
   );

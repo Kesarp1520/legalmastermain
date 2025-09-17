@@ -1,0 +1,7 @@
+- [x] Create AuthContext.tsx for authentication state management
+- [x] Update main.tsx to wrap App with AuthProvider
+- [x] Update Login.tsx to redirect to home after sign-in
+- [x] Update SignUp.tsx to redirect to home after sign-up
+- [x] Protect feature routes in App.tsx
+- [x] Update Header.tsx for auth-aware buttons
+- [x] Test authentication flow
