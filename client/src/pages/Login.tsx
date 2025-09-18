@@ -108,7 +108,7 @@ function LoginPage() {
           <div className="text-center">
             <p className="text-sm transition-colors">
               Don't have an account?{" "}
-              <button
+              <Button
                 type="button"
                 className=" hover:underline font-medium transition-colors"
                 onClick={() => {
@@ -116,7 +116,7 @@ function LoginPage() {
                 }}
               >
                 Create one here
-              </button>
+              </Button>
             </p>
           </div>
         </CardContent>
