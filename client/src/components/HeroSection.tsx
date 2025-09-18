@@ -74,7 +74,7 @@ export default function HeroSection() {
               data-testid="button-analyze-document"
               asChild
             >
-              <Link to="/document-uploader">
+              <Link to="/Document-uploader">
                 <Upload className="w-5 h-5 mr-2" />
                 Analyze Document
               </Link>

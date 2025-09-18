@@ -4,6 +4,7 @@ import { auth } from "@/lib/firebase";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import ThemeToggle from "@/components/ThemeToggle";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Loader2, Mail, Lock } from "lucide-react";
@@ -41,8 +42,8 @@ function LoginPage() {
           <div className="mx-auto w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4">
             <Lock className="w-8 h-8 text-primary-foreground" />
           </div>
-          <CardTitle className="text-3xl font-bold text-gray-900">Welcome Back</CardTitle>
-          <CardDescription className="text-gray-600">
+          <CardTitle className="text-3xl font-bold transition-colors"><ThemeToggle />Welcome Back</CardTitle>
+          <CardDescription className="transition-colors">
             Sign in to your LegalMaster account to continue
           </CardDescription>
         </CardHeader>
@@ -54,11 +55,11 @@ function LoginPage() {
           )}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+              <Label htmlFor="email" className="text-sm font-medium transition-colors">
                 Email Address
               </Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <Mail className="absolute left-3 top-3 h-4 w-4 transition-colors" />
                 <Input
                   id="email"
                   type="email"
@@ -72,7 +73,7 @@ function LoginPage() {
               </div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-sm font-medium text-gray-700">
+              <Label htmlFor="password" className="text-sm font-medium transition-colors">
                 Password
               </Label>
               <div className="relative">
@@ -96,7 +97,7 @@ function LoginPage() {
             >
               {loading ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin transition-colors" />
                   Signing In...
                 </>
               ) : (
@@ -105,11 +106,11 @@ function LoginPage() {
             </Button>
           </form>
           <div className="text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm transition-colors">
               Don't have an account?{" "}
               <button
                 type="button"
-                className="text-primary hover:underline font-medium"
+                className=" hover:underline font-medium transition-colors"
                 onClick={() => {
                   window.location.href = "/signup";
                 }}

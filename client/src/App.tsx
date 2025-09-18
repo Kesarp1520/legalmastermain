@@ -127,6 +127,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={HomePage} />
+      <Route path="/Document-uploader" component={() => <ProtectedRoute component={DocumentUploader} />} />
       <Route path="/simplify" component={() => <ProtectedRoute component={SimplifyPage} />} />
       <Route path="/explorer" component={() => <ProtectedRoute component={ExplorerPage} />} />
       <Route path="/chat" component={() => <ProtectedRoute component={ChatPage} />} />
