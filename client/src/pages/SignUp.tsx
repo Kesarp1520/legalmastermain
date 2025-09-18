@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Loader2, Mail, Lock, UserPlus } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 import { useLocation } from "wouter";
 
 function SignUpPage() {
@@ -42,14 +43,14 @@ function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br bg flex items-center justify-center p-4">
       <Card className="w-full max-w-md shadow-lg border-0">
         <CardHeader className="text-center space-y-2 pb-8">
           <div className="mx-auto w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4">
             <UserPlus className="w-8 h-8 text-primary-foreground" />
           </div>
-          <CardTitle className="text-3xl font-bold text-gray-900">Create Account</CardTitle>
-          <CardDescription className="text-gray-600">
+          <CardTitle className="text-3xl font-bold transition-colors ${isDarkName ? 'light' : 'dark'}"><ThemeToggle />Create Account</CardTitle>
+          <CardDescription className="transition-colors">
             Join LegalMaster to access legal assistance tools
           </CardDescription>
         </CardHeader>
@@ -61,11 +62,11 @@ function SignUpPage() {
           )}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+              <Label htmlFor="email" className="text-sm font-medium transition-colors ${isDarkName ? 'light' : 'dark'}">
                 Email Address
               </Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <Mail className="absolute left-3 top-3 h-4 w-4 transition-colors ${isDarkName ? 'light' : 'dark'}" />
                 <Input
                   id="email"
                   type="email"
@@ -79,11 +80,11 @@ function SignUpPage() {
               </div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-sm font-medium text-gray-700">
+              <Label htmlFor="password" className="text-sm font-medium transition-colors ${isDarkName ? 'light' : 'dark'}">
                 Password
               </Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <Lock className="absolute left-3 top-3 h-4 w-4 transition-colors ${isDarkName ? 'light' : 'dark'}" />
                 <Input
                   id="password"
                   type="password"
@@ -97,7 +98,7 @@ function SignUpPage() {
               </div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword" className="text-sm font-medium text-gray-700">
+              <Label htmlFor="confirmPassword" className="text-sm font-medium transition-colors ${isDarkName ? 'light' : 'dark'}">
                 Confirm Password
               </Label>
               <div className="relative">
@@ -121,7 +122,7 @@ function SignUpPage() {
             >
               {loading ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin transition-colors ${isDarkName ? 'light' : 'dark'}" />
                   Creating Account...
                 </>
               ) : (
@@ -130,11 +131,11 @@ function SignUpPage() {
             </Button>
           </form>
           <div className="text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm transition-colors ${isDarkName ? 'light' : 'dark'}">
               Already have an account?{" "}
               <button
                 type="button"
-                className="text-primary hover:underline font-medium"
+                className="hover:underline font-medium transition-colors ${isDarkName ? 'light' : 'dark'}"
                 onClick={() => setLocation("/login")}
               >
                 Sign in here

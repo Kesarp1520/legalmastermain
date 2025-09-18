@@ -36,13 +36,14 @@ function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg bg-gradient-to-br flex items-center justify-center p-4">
       <Card className="w-full max-w-md shadow-lg border-0">
         <CardHeader className="text-center space-y-2 pb-8">
           <div className="mx-auto w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4">
             <Lock className="w-8 h-8 text-primary-foreground" />
           </div>
-          <CardTitle className="text-3xl font-bold transition-colors"><ThemeToggle />Welcome Back</CardTitle>
+          <CardTitle className="text-3xl font-bold transition-colors ${isDarkName ? 'light' : 'dark'}">
+            <ThemeToggle />Welcome Back</CardTitle>
           <CardDescription className="transition-colors">
             Sign in to your LegalMaster account to continue
           </CardDescription>
@@ -55,7 +56,7 @@ function LoginPage() {
           )}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium transition-colors">
+              <Label htmlFor="email" className="text-sm font-medium transition-colors ${isDarkName ? 'light' : 'dark'}">
                 Email Address
               </Label>
               <div className="relative">
@@ -73,7 +74,7 @@ function LoginPage() {
               </div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-sm font-medium transition-colors">
+              <Label htmlFor="password" className="text-sm font-medium transition-colors ${isDarkName ? 'light' : 'dark'}">
                 Password
               </Label>
               <div className="relative">
@@ -97,7 +98,7 @@ function LoginPage() {
             >
               {loading ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin transition-colors" />
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin transition-colors ${isDarkName ? 'light' : 'dark'}" />
                   Signing In...
                 </>
               ) : (
@@ -106,17 +107,17 @@ function LoginPage() {
             </Button>
           </form>
           <div className="text-center">
-            <p className="text-sm transition-colors">
+            <p className="text-sm transition-colors ${isDarkName ? 'light' : 'dark'}">
               Don't have an account?{" "}
-              <Button
+              <button
                 type="button"
-                className=" hover:underline font-medium transition-colors"
+                className=" hover:underline font-medium transition-colors ${isDarkName ? 'light' : 'dark'}"
                 onClick={() => {
                   window.location.href = "/signup";
                 }}
               >
                 Create one here
-              </Button>
+              </button>
             </p>
           </div>
         </CardContent>
