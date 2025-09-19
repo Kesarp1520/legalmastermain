@@ -18,6 +18,7 @@ export default {
         input: "hsl(var(--input) / <alpha-value>)",
         'light':'color: rgba(55, 65, 81)',
         'dark':'#FFFFFF',
+        'dark2':'#FFFFFF',
         card: {
           DEFAULT: "hsl(var(--card) / <alpha-value>)",
           foreground: "hsl(var(--card-foreground) / <alpha-value>)",

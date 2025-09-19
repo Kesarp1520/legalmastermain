@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -107,18 +107,39 @@ function GuidePage() {
 import LoginPage from "@/pages/Login";
 import SignUpPage from "@/pages/SignUp";
 
+const AuthContext = createContext<any>(null);
+
+export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Example: check localStorage or API call
+    const storedUser = localStorage.getItem("user");
+
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+
+    setLoading(false); // ✅ IMPORTANT: always clear loading
+  }, []);
+
+  return (
+    <AuthContext.Provider value={{ user, loading, setUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+
 function ProtectedRoute({ component: Component, ...rest }: { component: React.ComponentType<any> }) {
   const { user, loading } = useAuth();
   const [, setLocation] = useLocation();
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!user) {
-    setLocation("/");
-    return null;
-  }
+  //if (!user) {
+  //  setLocation("/login");
+  //  return null;
+  //}
 
   return <Component {...rest} />;
 }
@@ -127,11 +148,27 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={HomePage} />
-      <Route path="/Document-uploader" component={() => <ProtectedRoute component={DocumentUploader} />} />
-      <Route path="/simplify" component={() => <ProtectedRoute component={SimplifyPage} />} />
-      <Route path="/explorer" component={() => <ProtectedRoute component={ExplorerPage} />} />
-      <Route path="/chat" component={() => <ProtectedRoute component={ChatPage} />} />
-      <Route path="/guide" component={() => <ProtectedRoute component={GuidePage} />} />
+
+      <Route path="/Document-uploader">
+        <ProtectedRoute component={DocumentUploader} />
+      </Route>
+
+      <Route path="/simplify">
+        <ProtectedRoute component={SimplifyPage} />
+      </Route>
+
+      <Route path="/explorer">
+        <ProtectedRoute component={ExplorerPage} />
+      </Route>
+
+      <Route path="/chat">
+        <ProtectedRoute component={ChatPage} />
+      </Route>
+
+      <Route path="/guide">
+        <ProtectedRoute component={GuidePage} />
+      </Route>
+
       <Route path="/login" component={LoginPage} />
       <Route path="/signup" component={SignUpPage} />
       <Route component={NotFound} />
@@ -143,10 +180,12 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <AuthProvider>
         <div className="min-h-screen bg-background text-foreground">
           <Router />
         </div>
         <Toaster />
+        </AuthProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );
