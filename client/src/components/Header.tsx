@@ -22,7 +22,7 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2 hover-elevate rounded-lg px-2 py-1" data-testid="link-home">
-              <Scale className="h-8 w-8 transition-colors text-muted-foreground " />
+              <Scale className="h-8 w-8 transition-colors ${isDarkName ? 'light' : 'dark'} " />
               <span className="text-2xl font-bold transition-colors">Legal Master</span>
             </Link>
           </div>

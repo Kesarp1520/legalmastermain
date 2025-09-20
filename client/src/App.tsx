@@ -169,8 +169,12 @@ function Router() {
         <ProtectedRoute component={GuidePage} />
       </Route>
 
-      <Route path="/login" component={LoginPage} />
-      <Route path="/signup" component={SignUpPage} />
+      <Route path="/login">
+        <ProtectedRoute component={LoginPage} />
+      </Route>
+      <Route path="/signup">
+        <ProtectedRoute component={SignUpPage} />
+      </Route>
       <Route component={NotFound} />
     </Switch>
   );

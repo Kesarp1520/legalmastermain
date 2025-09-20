@@ -86,24 +86,26 @@ export default function HeroSection() {
               data-testid="button-explore-laws"
             >
               <Search className="w-5 h-5 mr-2" />
+              <Link to="/explorer">
               Explore Laws
+              </Link>
             </Button>
           </div>
 
           {/* Feature highlights */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 max-w-4xl mx-auto">
-            <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-lg p-6 border border-primary-foreground/20">
-              <FileText className="w-8 h-8 text-accent mb-3" />
+            <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-lg p-6 border border-primary-foreground/20  duration-300 ease-in-out  hover:scale-[1.10]">
+              <FileText className="w-8 h-8 text-sticker mb-3" />
               <h3 className="text-lg font-semibold text-primary-foreground mb-2">Document Simplification</h3>
               <p className="text-primary-foreground/80 text-sm">Upload and instantly understand complex legal documents</p>
             </div>
-            <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-lg p-6 border border-primary-foreground/20">
-              <MessageSquare className="w-8 h-8 text-accent mb-3" />
+            <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-lg p-6 border border-primary-foreground/20 duration-300 ease-in-out  hover:scale-[1.10]">
+              <MessageSquare className="w-8 h-8 text-sticker mb-3" />
               <h3 className="text-lg font-semibold text-primary-foreground mb-2">AI Case Analysis</h3>
               <p className="text-primary-foreground/80 text-sm">Get expert analysis of your legal scenarios</p>
             </div>
-            <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-lg p-6 border border-primary-foreground/20">
-              <Search className="w-8 h-8 text-accent mb-3" />
+            <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-lg p-6 border border-primary-foreground/20 duration-300 ease-in-out  hover:scale-[1.10]">
+              <Search className="w-8 h-8 text-sticker mb-3" />
               <h3 className="text-lg font-semibold text-primary-foreground mb-2">Law Explorer</h3>
               <p className="text-primary-foreground/80 text-sm">Search and understand Indian laws simplified</p>
             </div>

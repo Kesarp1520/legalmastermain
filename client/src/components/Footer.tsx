@@ -10,7 +10,7 @@ export default function Footer() {
             {/* Logo & Description */}
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
-                <Scale className="h-8 w-8 text-accent" />
+                <Scale className="h-8 w-8 transition-colors ${isDarkName ? 'light' : 'dark'}" />
                 <span className="text-2xl font-bold">Legal Master</span>
               </div>
               <p className="text-primary-foreground/80 leading-relaxed mb-6 max-w-md">
@@ -102,7 +102,7 @@ export default function Footer() {
               </Link>
             </div>
             <div className="text-sm text-primary-foreground/60">
-              © 2024 Legal Master. All rights reserved.
+              © 2025 Legal Master. All rights reserved.
             </div>
           </div>
         </div>

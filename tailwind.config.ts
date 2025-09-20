@@ -19,6 +19,8 @@ export default {
         'light':'color: rgba(55, 65, 81)',
         'dark':'#FFFFFF',
         'dark2':'#FFFFFF',
+        sticker: 'hsl(var(--sticker))',
+        sticker2: 'hsl(var(--sticker2))',
         card: {
           DEFAULT: "hsl(var(--card) / <alpha-value>)",
           foreground: "hsl(var(--card-foreground) / <alpha-value>)",

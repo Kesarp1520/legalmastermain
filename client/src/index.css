@@ -67,6 +67,10 @@
 
   --accent: 38 43% 60%;
 
+  --sticker: 38 43% 60%;
+
+  --sticker2: 230 66% 30%;
+
   --accent-foreground: 230 15% 15%;
 
   --destructive: 0 75% 45%;
@@ -184,6 +188,10 @@
   --muted-foreground: 210 10% 65%;
 
   --accent: 230 20% 18%;
+
+  --sticker: 0 0% 100%;
+
+  --sticker2: 0 0% 100%;
 
   --accent-foreground: 210 10% 92%;
 
